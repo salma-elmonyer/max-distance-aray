@@ -1,12 +1,34 @@
-# max-distance-aray
-C++ program to find the maximum distance between elements in an array
-# Max Distance in Array
+#include<iostream>
+#include<climits>
+using namespace std;
 
-This is a simple C++ program that finds the maximum absolute difference
-between any two elements in an array.
+int maxDistance(int A[], int n){
+        
+        int dmax = INT_MIN;
+        for(int i =0; i < n; i++){
+            for(int j=0; j<n; j++){
+                if(i !=j){
+                    int diff = A[i] - A[j];
+                    if(diff < 0){
+                        diff = -diff;
+                    }
+                    if(diff > dmax){
+                        dmax = diff;
+                    }
+                }
+            }
+        }
+        return dmax;
+    }
 
-## Language
-- C++
-
-## Purpose
-Practice problem solving and nested loops.
+int main(){
+    int n = 4;
+    int A[n];
+    cout << "enter a number of numbers: ";
+    for(int i = 0; i < n; i++){
+        cin >> A[i];
+    }
+    int result = maxDistance(A,n);
+    cout << "the max diffirance is: " << result;
+    
+}
